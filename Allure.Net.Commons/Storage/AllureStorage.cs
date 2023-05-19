@@ -59,6 +59,7 @@ namespace Allure.Net.Commons.Storage
         public void AddStep(string parentUuid, string uuid, StepResult stepResult)
         {
             Put(uuid, stepResult);
+            if (parentUuid == null) return;
             Get<ExecutableItem>(parentUuid).steps.Add(stepResult);
         }
     }
